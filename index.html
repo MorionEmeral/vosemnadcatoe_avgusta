@@ -1,39 +1,76 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Приглашение на свадьбу</title>
-<style>
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Свадебное приглашение</title>
+    <style>
+        /* Полный сброс отступов */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html, body{
-width: 100%;
-background-color: #0a0a0a;
-}
+        body {
+            background: #0a0a0a; /* тёмный фон, пока грузится картинка */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.photo-wrapper{
-width: 100%;
-display: flex;
-justify-content: center;
-}
+        /* Контейнер для фото – по ширине экрана */
+        .photo-container {
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+        }
 
-.photo-wrapper img{
-width: 100%
-height: auto;
-display: block;
-max-width: 100%;
-}
-</style>
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* если картинка не загрузится – покажем альтернативный текст */
+            background: #222;
+        }
+
+        /* Сообщение об ошибке загрузки (будет показано, если фото не найдено) */
+        .error-message {
+            color: #ff6b6b;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
-<div class="photo-wrapper">
-<img scr="vosemnadcatoeavgusta.jpg" alt="Приглашение на свадьбу">
-</div>
+    <div class="photo-container">
+        <!-- 
+            ⚠️ ВАЖНО: 
+            - замените "priglaschenie.jpg" на точное имя вашего файла
+            - если фото лежит в папке, укажите путь, например "images/foto.jpg"
+            - проверьте расширение (.jpg, .png, .gif)
+            - имя должно быть написано ТОЧНО ТАК ЖЕ, включая регистр букв
+        -->
+        <img 
+            src="vosemnadcatoeavgusta.jpg" 
+            alt="Приглашение на свадьбу"
+            onerror="this.style.display='none'; document.getElementById('error').style.display='block';"
+        >
+    </div>
+
+    <!-- Сообщение об ошибке – появится, если фото не загрузилось -->
+    <div id="error" class="error-message" style="display: none;">
+        ❌ Фото не найдено. Убедитесь, что файл лежит рядом с index.html и назван правильно.
+    </div>
+
+    <!-- Если хотите, добавьте текст под фото (дата, место) -->
+    <div class="footer-text">
+        Ждём вас 15 августа 2026 в 17:00
+    </div>
+
 </body>
 </html>
